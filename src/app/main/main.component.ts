@@ -11,7 +11,7 @@ export class MainComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private getItems: MainService) { }
+  constructor(public getItems: MainService) { }
 
   ngOnInit() {
     this.getItems.getCategoriesList();
