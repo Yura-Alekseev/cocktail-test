@@ -1,0 +1,37 @@
+<main class="main">
+  <div class="wrapper">
+    <form class="filter" [formGroup]="form">
+      <div class="filter-item" *ngFor="let category of getItems.categories">
+        <label class="item-title">
+          <input
+            class="check-input"
+            type="checkbox"
+            [(ngModel)]="this.category.categoryName.selected"
+            formControlName="checkbox">
+          <span class="check-box"></span>
+          {{category.categoryName.strCategory}}
+        </label>
+      </div>
+
+      <button class="apply-btn" (click)="submit()">apply</button>
+    </form>
+
+    <div class="list">
+      <div class="list-item" *ngFor="let category of getItems.categoriesList">
+        <div *ngIf="category.categoryName">
+          <h2 class="list-title">{{category.categoryName.strCategory}}</h2>
+          <span class="separator"></span>
+          <div class="product-items">
+            <div class="product-item-wrapper" *ngFor="let drink of category.items">
+              <div class="product-item">
+                <img class="product-item-photo" [src]="drink.strDrinkThumb" alt="photo">
+
+                <span class="product-item-title">{{drink.strDrink}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
